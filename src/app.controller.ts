@@ -1,12 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { MarvelService } from './marvel/marvel.service'; 
 
-@Controller()
+@Controller('characters')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly marvelService: MarvelService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async getCharacters(): Promise<any> {
+    return this.marvelService.getCharacters();
   }
 }
